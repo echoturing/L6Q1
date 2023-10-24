@@ -3,13 +3,16 @@ import numpy as np
 import pandas as pd
 from joblib import load
 import os
-
+import joblib
+import sklearn
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
     request_type_str = request.method
     if request_type_str == 'GET':
+        print("joblib:",joblib.__version__)
+        print("sklearn",sklearn.__version__)
         return render_template('index.html', href2='')
     else:
         myage = request.form['age']
